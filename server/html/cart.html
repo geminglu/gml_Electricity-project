@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>购物车</title>
+    <style>
+        *{margin:0;padding:0}
+        table{width: 1000px;margin: 0 auto;border:1px solid #ccc}
+        tbody{}
+        thead{background:#eaeaea;line-height: 40px;}
+        tbody img{height:100px}
+        tbody td{padding:0 20px;height:100px}
+        tbody input{width: 50px;}
+        .foor{position: fixed;left:0;right:0;height:50px;bottom:0;background:#ededed}
+        .maring{width:900px;margin:0 auto;}
+        .totalValue{color: crimson;line-height: 50px;display: inline-block;}
+        .productList{float: right;float: right;margin-top: 10px;text-decoration: none;color: white;background: #FF5722;height: 30px;line-height: 30px; width: 100px; text-align: center;}
+        .list:hover{background: rgb(250, 250, 250);}
+        .tbody>tr>td .checkbox{background: rosybrown;}
+    </style>
+</head>
+<body>
+    <div class="top1"></div>
+
+    <table border="0" cellspacing="0"  align="center">
+        <thead>
+            <tr>
+                <th></th>
+                <th>图片</th>
+                <th>名字</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>小计</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+        </tbody>
+    </table>
+    <div class="foor">
+            <div class="maring">
+                <label for="check">全选</label>
+                <input type="checkbox" class="checkall" id="check" checked>
+                <input type="button" class="antitone" id="antitone" value="反选">
+                <input type="button" class="cancel" id="cancel" value="取消">
+                <div class="totalValue">总价：<span></span></div>
+                <a class="productList" href="list.html">继续购物</a>
+            </div>
+        </div>
+
+</body>
+
+<script src="../javascript/cart.js" type="module"></script>
+</html>

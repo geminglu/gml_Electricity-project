@@ -1,8 +1,177 @@
 .page_main{
-
+    h2{font: 700 24px/1em "";color:rgb(65, 65, 65);line-height: 35px;}
+    h3{font: 18px/1em "";color:rgb(255, 136, 0);line-height: 35px}
     .page_main_left{
-        width:400px;
-        height:400px;
-        
+        width:380px;
+        height:380px;
+        float:left;
+        >img{
+            width:380px;
+        }
+        .page_main_left_banner{
+            width: 350px;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            padding: 5px 0;
+            border-bottom: 1px solid #dadada;
+            :nth-child(1){
+                left: 0;
+            }
+            :nth-child(2){
+                right: 0;
+            }
+        }
+        .page_main_left{
+        }
+        .page_main_left_banner ul{
+            width: 325px;
+            overflow: hidden;
+            margin-left: 10px;
+            display: flex;
+            line-height: 100%;
+            flex-direction: row;
+        }
+        .page_main_left_banner ul li{
+            
+            
+        }
+        .page_main_left_banner_jian{
+            align-self: center;
+            position: absolute;
+            width: 15px;
+            height: 45px;
+            background:#cccccc;
+            text-align: center;
+            line-height: 45px;
+            border-radius: 5px;
+            color: #4c4c4c;
+        }
+        .page_main_left_banner ul li img{
+            width: 50px;
+        }
+    }
+    .page_main_right{
+        color:#666;
+        float: right;
+        width: 620px;
+        span{
+            color:red;
+        }
+        .page_main_right_price span{
+            font:700 24px/1em "";
+        }
+        .page_main_right_price_comment{
+            margin:10px 0;
+            i{
+                margin:0 10px;
+                text-decoration: none;
+                font-style: normal;
+            }
+            .page_main_right_price_sp{
+                display: inline-block;
+                color:#666;
+                width:60px;
+                display: inline-block;
+                text-align-last: justify;
+                margin-right: 5px;}
+        }
+        .distribution{
+            margin-top:20px;
+            .page_main_right_tile{
+                display: inline-block;
+                color:#666;
+                width:60px;
+                display: inline-block;
+                text-align-last: justify;
+                margin-right: 5px;
+            }
+            .distribution_top_site{
+                color:#333;
+                padding: 3px;
+                border:1px solid #d4d4d4;
+            }
+            .page_main_right_goods{
+                color:#999;
+                font-weight:700;
+            }
+            span{
+                color:#666;
+            }
+            a{
+                color:blue;
+                margin:0 5px;
+            }
+            p{margin-left: 70px;
+                margin-top:10px;
+                line-height: 30px;
+                color:#999;
+            }
+        }
+        .page_main_right_versions{
+
+            span{
+                display: inline-block;
+                color:#666;
+                width:60px;
+                display: inline-block;
+                text-align-last: justify;
+                margin-right: 5px;
+                vertical-align: top;
+            }
+            ul{
+                width:540px;
+                display: inline-block;
+                .ver{
+                    height:35px;
+                    line-height: 35px;
+                    padding:0 5px;
+                }
+                li{
+                    cursor: pointer;
+                    margin:2px 5px;
+                    font: 14px/1em "";
+                    float: left;
+                    border:1px solid #dadada;
+                    a{
+                        color:#666
+
+                    }
+                }
+            }
+        }
+        .page_main_right_mun{
+            span{
+                display: inline-block;
+                color:#666;
+                width:60px;
+                display: inline-block;
+                text-align-last: justify;
+                margin-right: 5px;
+            }
+            input[type="number"]{
+                text-align: center;
+                margin-left: 10px;
+                width:30px;
+            }
+        }
+        input[type="button"]{
+            cursor: pointer;
+            font:700 16px/1em "";
+            color:white;
+            width:120px;
+            height:40px;
+            border:none;
+            outline: 0;
+            border-radius: 2px;
+            margin-top:10px;
+            margin-left: 30px;
+        }
+        .gm{
+            background: red;
+        }
+        .gwc{
+            background:rgb(255, 136, 0)}
     }
 }

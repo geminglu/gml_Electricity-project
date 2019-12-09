@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>表单验证</title>
+	<style>
+		.loog{margin:0 auto;width:870px;position:relative}
+		form>div{margin:20px auto;width:420px}
+		span{font:14px/1em "";color: #ff7cc6;position:absolute;left:656px;margin-top: -30px;}
+		*{margin:0;padding:0}
+		input{width:420px;height:40px;outline:0;border-radius:5px;border: 1px solid #e8e8e8;font:16px/40px "";text-indent:5px;transition: .2s;}
+		input:hover{border: 1px solid #bababa;}
+		input:focus{border: 1px solid #03a9f4;}
+		input[type="button"]{background:#03a9f4;outline: 0;border:0;color:#fff}
+		input[type="button"]:hover{background:#12b5ff;border:0}
+		ul{height:10px;width:300px;background:#e6e6e6;border:1px solid #dbdada;border-radius: 10px;overflow: hidden;}
+		ul li{list-style: none;float: left;}
+		ul li:nth-child(1){height:10px;width:99px;border-right: 1px solid #c3c3c3}
+		ul li:nth-child(2){height:10px;width:99px;border-right: 1px solid #c3c3c3}
+		ul li:nth-child(3){height:10px;width:99px;}
+		.mmqd>h5{margin:5px 0}
+		.mmqd{position: relative;}
+		.mmqd>span{left: 320px;top:50px}
+		.dateOfBirth{}
+		.dateOfBirth h5{margin: 5px 0;}
+		.dateOfBirth input{width:100px;float:left;margin-bottom: 20px;}
+		.dateOfBirth span{float: left;position: static;color:#000;font: 16px/40px "";margin-top:0;margin-right: 20px;margin-left: 2px;}
+	</style>
+</head>
+<body>
+    
+</body>
+
+
+	<div class="loog">
+		<form>
+			<div><input type="text" class="user" placeholder="请输入用户名" /><span class="usery"></span></div>
+			<div><input type="text" class="tel" placeholder="请输入手机号" /><span class="tely"></span></div>
+			<div><input type="text" class="email" placeholder="请输入邮箱地址" /><span class="emaily"></span></div>
+			<div><input type="password" class="password1" placeholder="请输入密码" /><span class="password1y"></span></div>
+			<div class="mmqd">
+				<h5>密码强度：</h5>
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<span></span>
+			</div>
+			<div><input type="password" class="password2" placeholder="请再次输入密码" /><span class="password2y"></span></div>
+			<div class="dateOfBirth">
+				<h5>出生日期：</h5>
+				<input type="text"><span>年</span>
+				<input type="text"><span>月</span>
+				<input type="text"><span>日</span>
+			</div>
+			<div class="code">
+				<span class="codeym"></span>
+			</div>
+			<div><input class="but" type="button" value="注册" /></div>
+		</form>
+	</div>
+
+
+<script>
+	var user = document.querySelector(".user");
+	var usery = document.querySelector(".usery");
+	var tel = document.querySelector(".tel");
+	var tely = document.querySelector(".tely");
+	var email = document.querySelector(".email");
+	var emaily = document.querySelector(".emaily");
+	var pass = document.querySelector(".password1");
+	var passy = document.querySelector(".password1y");
+	var pass2 = document.querySelector(".password2");
+	var pass2y = document.querySelector(".password2y");
+	var li = document.querySelectorAll("ul>li");
+	var qd = document.querySelector(".mmqd>span");
+	var but = document.querySelector(".but");
+	//验证用户名
+	var reguser = /^[a-z\u2E80-\u9FFF]{4,18}$/;
+	//验证手机号
+	var regtel = /^\d{11}$/;
+	//验证邮箱地址
+	//验证密码
+	var regpassword1= /\d/;
+	var regpassword2= /[a-z-_]+/;
+	var regpassword3= /\W/;
+	var regemail = /^[a-zA-Z0-9]{1,18}@[a-zA-Z0-9]{1,18}.[a-zA-Z]{2,4}$/;
+	user.onblur = function(){
+		if (!(reguser.test(user.value))){
+			usery.innerHTML = "用户名必须时4-18位中文或英文";
+			user.style.border = "1px solid #ff7cc6";
+		}else{
+			usery.innerHTML = "";
+			user.style.border = "";
+		}
+	}
+	tel.onblur = function (){
+		if (!(regtel.test(tel.value))){
+			tely.innerHTML = "手机号不合法";
+			tel.style.border = "1px solid #ff7cc6";
+		}else{
+			tely.innerHTML = "";
+			tel.style.border = "";
+		}
+	}
+	email.onblur = function (){
+		if (!(regemail.test(email.value))){
+			emaily.innerHTML = "邮箱地址不合法";
+			email.style.border = "1px solid #ff7cc6";
+		}else{
+			emaily.innerHTML = "";
+			email.style.border = "";
+		}
+	}
+	pass.oninput = function (){
+		if (pass.value.length >= 6 && pass.value.length <= 18){
+			passy.innerHTML = "";
+			var a=b=c=t=0;
+			if(regpassword1.test(pass.value)) a=1;
+			if(regpassword2.test(pass.value)) b=1;
+			if(regpassword3.test(pass.value)) c=1;
+			t=a+b+c;
+			console.log(t);
+			switch (t) {
+				case 0:
+				qd.innerHTML = ""
+				li[0].style.background = "";
+				li[1].style.background = "";
+				li[2].style.background = "";
+				break;
+				case 1:
+				qd.innerHTML = "弱"
+				li[0].style.background = "#FF5722";
+				li[1].style.background = "";
+				li[2].style.background = "";
+				break;
+				case 2:
+				qd.innerHTML = "中"
+				li[1].style.background = "#FFEB3B";
+				li[2].style.background = "";
+				break;
+				case 3:
+				qd.innerHTML = "强"
+				li[0].style.background = "#FF5722";
+				li[1].style.background = "#FFEB3B";
+				li[2].style.background = "#8BC34A";
+				break;			
+			}
+		}else{
+			passy.innerHTML = "密码长度必须在6-18位";
+				qd.innerHTML = ""
+			li[0].style.background = "";
+			li[1].style.background = "";
+			li[2].style.background = "";
+		}
+	}
+	pass2.onblur = function (){
+		if (!(pass2.value == pass.value)){
+			pass2y.innerHTML = "两次密码不一样"
+		}else{
+			pass2y.innerHTML = ""
+		}
+	}
+	but.onclick = function (){
+		if (!(reguser.test(user.value))){
+			usery.innerHTML = "用户名必须时4-18位中文或英文";
+			user.style.border = "1px solid #ff7cc6";
+		}else{
+			usery.innerHTML = "";
+		}
+		if (!(regtel.test(tel.value))){
+			tely.innerHTML = "手机号不合法";
+			tel.style.border = "1px solid #ff7cc6";
+		}else{
+			tely.innerHTML = "";
+		}
+		if (!(regemail.test(email.value))){
+			emaily.innerHTML = "邮箱地址不合法";
+			email.style.border = "1px solid #ff7cc6";
+		}else{
+			emaily.innerHTML = "";
+		}
+		if (pass.value == ""){
+			passy.innerHTML = "密码不能为空";
+			pass.style.border = "1px solid #ff7cc6";
+		}
+	}
+</script>
+<script src="../javascript/cart.js" type="module"></script>
+
+</html>
