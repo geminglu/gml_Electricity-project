@@ -1,0 +1,38 @@
+/* 清楚内外边距 */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,dl,dd,fieldset,legend,input,textarea,select{margin:0;padding:0}
+
+body{font-size:12px}
+
+/* 清楚下划线 */
+a,u,del{text-decoration:none}
+
+/* 清楚列表编号 */
+li{list-style:none}
+
+/*清楚边框*/
+fieldset ,a img,.bor0 {border:0;}
+
+/*合并单元格边框*/
+table{border-collapse:collapse}
+
+img{vertical-align:middle;} 
+
+/* <meta name="viewport“ content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/> */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+
+/* line-block居中 居中元素必须是lineblock元素 给居中元素的父级设置 居中元素也要书写vertical-align:middle*/ 
+.line_middle::after{content:"";height:100%;display:inline-block;vertical-align:middle;} 
+
+/*单行文本溢出显示省略号*/
+.overflow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/*清楚浮动-在浮动元素的父级上添加clear类*/
+.clearfix:after{content:"";clear:both;display:block}
+
+/*首航缩进2倍字号*/
+.ind2{text-indent:2em}
+
+
+
+

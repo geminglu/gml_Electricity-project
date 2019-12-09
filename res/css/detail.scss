@@ -1,0 +1,52 @@
+// sass的基本嵌套
+// 可以无限嵌套
+div{
+    width:100px;
+    height:100px;
+    p{
+        width:20px;
+        span{
+            height:20px
+        }
+    }
+}
+box{
+    background:red;
+    div{
+        color:red;
+        >span{
+            color:#fff;
+        }
+        &:hover{color:#f9f}
+    }
+    :hover{color:red}
+}
+div1{
+    width:100px;
+    .box1, .box2{
+        height:100px;
+        .acv{
+            coloe:dd
+        }
+    }
+}
+// 属性嵌套
+div2{
+    width:100px;
+    border: 6px solid #a3a{
+        left: 1px solid #f8f;
+        right: 2px solid #f7f;
+        // top:3px solid #38a;
+        // bottom:6px solid #c31;
+    }
+}
+// sass混入函数没有返回值
+// 使用@mixin 函数名() {}  定义
+// 使用@include 调用
+@mixin trans($p) {
+    -webkit-transition: $p 1s linear;
+    -moz-transition: $p 1s linear;
+    -ms-transition: $p 1s linear;
+    -o-transition: $p 1s linear;
+}
+.div{@include trans((width))}
