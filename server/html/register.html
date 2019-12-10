@@ -34,7 +34,7 @@
 
 	<div class="loog">
 		<form>
-			<div><input type="text" class="user" placeholder="请输入用户名" /><span class="usery"></span></div>
+			<div><input type="text" type="false" class="user" placeholder="请输入用户名" /><span class="usery"></span></div>
 			<div><input type="text" class="tel" placeholder="请输入手机号" /><span class="tely"></span></div>
 			<div><input type="text" class="email" placeholder="请输入邮箱地址" /><span class="emaily"></span></div>
 			<div><input type="password" class="password1" placeholder="请输入密码" /><span class="password1y"></span></div>
@@ -57,7 +57,7 @@
 			<div class="code">
 				<span class="codeym"></span>
 			</div>
-			<div><input class="but" type="button" value="注册" /></div>
+			<div><input class="reg" type="button" value="注册" /></div>
 		</form>
 	</div>
 
@@ -75,7 +75,7 @@
 	var pass2y = document.querySelector(".password2y");
 	var li = document.querySelectorAll("ul>li");
 	var qd = document.querySelector(".mmqd>span");
-	var but = document.querySelector(".but");
+	var reg = document.querySelector(".reg");
 	//验证用户名
 	var reguser = /^[a-z\u2E80-\u9FFF]{4,18}$/;
 	//验证手机号
@@ -88,40 +88,46 @@
 	var regemail = /^[a-zA-Z0-9]{1,18}@[a-zA-Z0-9]{1,18}.[a-zA-Z]{2,4}$/;
 	user.onblur = function(){
 		if (!(reguser.test(user.value))){
+			user.type = false;
 			usery.innerHTML = "用户名必须时4-18位中文或英文";
 			user.style.border = "1px solid #ff7cc6";
 		}else{
+			user.type = true;
 			usery.innerHTML = "";
 			user.style.border = "";
 		}
 	}
 	tel.onblur = function (){
 		if (!(regtel.test(tel.value))){
+			tel.type = false;
 			tely.innerHTML = "手机号不合法";
 			tel.style.border = "1px solid #ff7cc6";
 		}else{
+			tel.type = true;
 			tely.innerHTML = "";
 			tel.style.border = "";
 		}
 	}
 	email.onblur = function (){
 		if (!(regemail.test(email.value))){
+			email.type = false;
 			emaily.innerHTML = "邮箱地址不合法";
 			email.style.border = "1px solid #ff7cc6";
 		}else{
+			email.type = true;
 			emaily.innerHTML = "";
 			email.style.border = "";
 		}
 	}
 	pass.oninput = function (){
 		if (pass.value.length >= 6 && pass.value.length <= 18){
+			pass.type = true;
 			passy.innerHTML = "";
 			var a=b=c=t=0;
 			if(regpassword1.test(pass.value)) a=1;
 			if(regpassword2.test(pass.value)) b=1;
 			if(regpassword3.test(pass.value)) c=1;
 			t=a+b+c;
-			console.log(t);
 			switch (t) {
 				case 0:
 				qd.innerHTML = ""
@@ -148,6 +154,7 @@
 				break;			
 			}
 		}else{
+			pass.type = false;
 			passy.innerHTML = "密码长度必须在6-18位";
 				qd.innerHTML = ""
 			li[0].style.background = "";
@@ -162,23 +169,30 @@
 			pass2y.innerHTML = ""
 		}
 	}
-	but.onclick = function (){
+	window.but_ty = 0;
+	reg.onclick = function (){
 		if (!(reguser.test(user.value))){
+			user.type = false;
 			usery.innerHTML = "用户名必须时4-18位中文或英文";
 			user.style.border = "1px solid #ff7cc6";
 		}else{
+			user.type = true;
 			usery.innerHTML = "";
 		}
 		if (!(regtel.test(tel.value))){
+			tel.type = false;
 			tely.innerHTML = "手机号不合法";
 			tel.style.border = "1px solid #ff7cc6";
 		}else{
+			tel.type = true;
 			tely.innerHTML = "";
 		}
 		if (!(regemail.test(email.value))){
+			email.type = false;
 			emaily.innerHTML = "邮箱地址不合法";
 			email.style.border = "1px solid #ff7cc6";
 		}else{
+			email.type = true;
 			emaily.innerHTML = "";
 		}
 		if (pass.value == ""){
@@ -186,7 +200,14 @@
 			pass.style.border = "1px solid #ff7cc6";
 		}
 	}
-</script>
-<script src="../javascript/cart.js" type="module"></script>
+			// if (user.getAttribute("type") == "true" && tel.getAttribute("type") == "true" && email.getAttribute("type") == "true" && pass.getAttribute("type")) {
+			// 	but_ty = true;
+			// 	console.log(1)
+			// }else{
+			// 	but_ty = false;
+			// 	console.log(2)
+			// }
+	</script>
+	<script src="../javascript/login.js" type="module"></script>
 
 </html>
