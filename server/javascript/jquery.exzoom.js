@@ -133,7 +133,7 @@
         //循环所有图片,计算尺寸,添加缩略图导航
         for (let i = 0; i < imgNum; i++) {
             imgArr[i] = copute_image_prop(images.eq(i));//记录图片的尺寸属性等
-            console.log(imgArr[i]);
+
             let li = exzoom_img_ul.find("li").eq(i);
             li.css("width", boxWidth);//设置图片上级的 li 元素的宽度
             li.find("img").css({
@@ -292,7 +292,7 @@
         //移动端大图区域的 touchend 事件
         exzoom_img_ul.on("touchend", function (event) {
             //触屏滑动,根据移动方向按倍数对齐元素
-            console.log(endX < startX);
+
             if (endX < startX) {
                 //向左滑动
                 moveRight();

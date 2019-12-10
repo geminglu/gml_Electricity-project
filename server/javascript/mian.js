@@ -48,20 +48,38 @@ function floor() {
     })
 
 }
-setTimeout(()=>{
-    class lon{
-        constructor() {
-            this.coo = $.cookie("userMsg");
-            if (JSON.parse(this.coo).length >= 1) {
-                JSON.parse(this.coo).forEach(function (item,index,arr) {
-                    $(".lll").html("欢迎" + item.user)
-                });
-            }
-        }
-    }
-new lon();
-},1000)
-floor();
+
+// 首页头部登录状态需完善
+/**
+ * ***********************************************************
+ * ***********************************************************
+ * ***********************************************************
+ * ***********************************************************
+ * ***********************************************************
+ */
+// setTimeout(()=>{
+//     class lon{
+//         constructor() {
+//             this.coo = $.cookie("userMsg");
+//             console.log(this.coo);
+//             console.log(JSON.parse(this.coo))
+//             if (JSON.parse(this.coo).length >= 1) {
+//                 JSON.parse(this.coo).forEach(function (item,index,arr) {
+//                     $(".lll").html("欢迎" + item.user)
+//                 });
+//             }
+//         }
+//     }
+// new lon();
+// },1000)
+// floor();
+/**
+ * ***********************************************************
+ * ***********************************************************
+ * ***********************************************************
+ * ***********************************************************
+ * ***********************************************************
+ */
 
 
 class renderData{
@@ -84,14 +102,25 @@ class renderData{
         let box1li = $(".box1>ul>li").length;
         let resl = this.res.length;
         let ran = random(0,resl);
+        $(".box1>ul>li").on("click",function () {
+            $.cookie("spid",$(this).attr("id"),{expires: 7, path: '/'})
+            // location.href = "./html/detailPage.html";
+            location.href = "./html/detailPage.html";
+        })
         for (let i=0;i<box1li;i++) {
+            $(".box1>ul>li").eq(i).attr("id",this.res[ran+i].doosid)
             $(".box1>ul>li").eq(i).css("background",`url(${this.res[ran+i].img})  no-repeat center 40px`);
             $(".box1>ul>li").eq(i).css("backgroundSize","120%");
             $(".box1>ul>li .box1_tile h3").eq(i).html(this.res[ran+i].name);
             $(".box1>ul>li .box1_tile span").eq(i).html(this.res[ran+i].title)
         }
         let boximg = $(".box2>ul>li").length;
+        $(".box2>ul>li>a>img,.box2>ul>li h4,.box2_youhui a").on("click",function () {
+            $.cookie("spid",$(this).parents("li").attr("id"),{expires: 7, path: '/'})
+            location.href = "./html/detailPage.html";
+        });
         for (let i=0;i<boximg;i++) {
+            $(".box2>ul>li").eq(i).attr("id",this.res[i].doosid);
             $(".box2>ul>li>a>img").eq(i).attr("src",this.res[i].img);
             $(".box2>ul>li h4").eq(i).html(this.res[i].name);
             $(".box2>ul>li h5").eq(i).html(this.res[i].title);
@@ -99,12 +128,16 @@ class renderData{
             $(".box2>ul>li ul .original").eq(i).html(this.res[i].original)
         }
         let bgmolen = $(".bgmobile").length;
+        $(".bgmobile").on("click",function () {
+            $.cookie("spid",this.id,{expires: 7, path: '/'})
+            location.href = "./html/detailPage.html";
+        })
         for (let i=0;i<bgmolen;i++) {
+            $(".bgmobile").eq(i).attr("id",this.res[i].doosid);
             $(".bgmobile>.s1").children().eq(i).html(this.res[i].jiage);
             $(".bgmobile>s").children().eq(i).html(this.res[i].original);
-            $(".bgmobile>.s3")[i].innerHTML = this.res[i].name;
-            $(".bgmobile")[i].style.background = `url(${this.res[i].img})  no-repeat center 10px`;
-            $(".bgmobile")[i].style.backgroundSize = "65%"
+            $(".bgmobile").eq(i).css("background",`url(${this.res[i].img})  no-repeat center 10px/65%`);
+            $(".bgmobile>.s3").eq(i).html(this.res[i].name);
         }
     }
 }
