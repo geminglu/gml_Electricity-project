@@ -1,5 +1,6 @@
 import "./jquery-1.12.4.js";
 import "./banner.js";
+import "./jquery_cookie.js";
 $(".banner").banner($(".banner").find("img"),{
     but:false,
 });
@@ -47,4 +48,19 @@ function floor() {
     })
 
 }
+setTimeout(()=>{
+    console.log($(".lll"))
+    class lon{
+        constructor() {
+            this.coo = $.cookie("userMsg");
+            console.log()
+            if (JSON.parse(this.coo).length >= 1) {
+                JSON.parse(this.coo).forEach(function (item,index,arr) {
+                    $(".lll").html("欢迎" + item.user)
+                });
+            }
+        }
+    }
+new lon();
+},1000)
 floor();

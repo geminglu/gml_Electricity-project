@@ -69,7 +69,7 @@ class register{
             }
         }
         console.log(JSON.stringify(this.msg))
-        $.cookie("userMsg",JSON.stringify(this.msg));
+        $.cookie("userMsg",JSON.stringify(this.msg),{ expires: 7, path: '/' });
     }
     // 注册成功后跳转到登录页面
     success(){
