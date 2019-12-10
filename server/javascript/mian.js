@@ -49,11 +49,9 @@ function floor() {
 
 }
 setTimeout(()=>{
-    console.log($(".lll"))
     class lon{
         constructor() {
             this.coo = $.cookie("userMsg");
-            console.log()
             if (JSON.parse(this.coo).length >= 1) {
                 JSON.parse(this.coo).forEach(function (item,index,arr) {
                     $(".lll").html("欢迎" + item.user)
@@ -64,3 +62,53 @@ setTimeout(()=>{
 new lon();
 },1000)
 floor();
+
+
+class renderData{
+    constructor() {
+        this.ajaxqq();
+    }
+    ajaxqq(){
+        var that = this;
+        $.ajax({
+            url:"data/data.json",
+            success:function(a){
+                that.res = a;
+                that.doc();
+            },
+            dataType:"json",
+        })
+    }
+    // 获取元素
+    doc() {
+        let box1li = $(".box1>ul>li").length;
+        let resl = this.res.length;
+        let ran = random(0,resl);
+        for (let i=0;i<box1li;i++) {
+            $(".box1>ul>li").eq(i).css("background",`url(${this.res[ran+i].img})  no-repeat center 40px`);
+            $(".box1>ul>li").eq(i).css("backgroundSize","120%");
+            $(".box1>ul>li .box1_tile h3").eq(i).html(this.res[ran+i].name);
+            $(".box1>ul>li .box1_tile span").eq(i).html(this.res[ran+i].title)
+        }
+        let boximg = $(".box2>ul>li").length;
+        for (let i=0;i<boximg;i++) {
+            $(".box2>ul>li>a>img").eq(i).attr("src",this.res[i].img);
+            $(".box2>ul>li h4").eq(i).html(this.res[i].name);
+            $(".box2>ul>li h5").eq(i).html(this.res[i].title);
+            $(".box2>ul>li .box2_youhui>span").eq(i).html(this.res[i].jiage);
+            $(".box2>ul>li ul .original").eq(i).html(this.res[i].original)
+        }
+        let bgmolen = $(".bgmobile").length;
+        for (let i=0;i<bgmolen;i++) {
+            $(".bgmobile>.s1").children().eq(i).html(this.res[i].jiage);
+            $(".bgmobile>s").children().eq(i).html(this.res[i].original);
+            $(".bgmobile>.s3")[i].innerHTML = this.res[i].name;
+            $(".bgmobile")[i].style.background = `url(${this.res[i].img})  no-repeat center 10px`;
+            $(".bgmobile")[i].style.backgroundSize = "65%"
+        }
+    }
+}
+function random(max,min) {
+    return (Math.round(Math.random()*(max-min)+min));
+}
+new renderData();
