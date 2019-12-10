@@ -270,6 +270,7 @@ a:hover{color:#0953d3;}
 .box2_right .box2_price li span{display: block;line-height: 20px;}
 .box_activity{color:red;padding-left:30px;background: url(../images/sprite.png) no-repeat;background-position: -288px -152px;line-height: 30px;border-bottom:1px solid #e3e3e3;margin-bottom:20px}
 .box_activity span{width:10px;height:10px;background:#df2d11;font:700 12px/1em "";color:white;text-align: center;margin: 0 3px;border-radius: 3px;padding: 0 3px;}
+.box3{margin:30px}
 .box3_title{border-bottom: 1px solid #000;}
 .box3_title h2{font:700 28px/40px "";border-bottom: 3px solid #000;display:inline-block}
 .box3_title span{font: 16px/1em "";color:#206eef;margin-left:30px}
@@ -304,7 +305,7 @@ a:hover{color:#0953d3;}
 .box3_main .te:hover{background-position: -10px 0px;}
 .box3_main .box3_main_right_2 .te2:hover{background-position: -10px center;}
 .bgmobile,.rotate,.te{transition: .5s;}
-.floatWin{width: 0;position: fixed;top: 125px;margin-left:145;left:0;display:none}
+.floatWin{width: 0;position: fixed;top: 125px;margin-left:145;left:145px;}
 .floatWin ul{width: 110px;font: 14px/1em "";text-align:center;border-top:1px solid #e3e3e3;border-left:1px solid #e3e3e3;border-right:1px solid #e3e3e3;position: absolute;left: -130px;background: white;}
 .floatWin li{border-bottom:1px solid #e3e3e3}
 .floatWin li span{line-height: 20px;}
