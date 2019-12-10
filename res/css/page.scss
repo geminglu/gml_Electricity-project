@@ -1,13 +1,25 @@
 .page_main{
+    margin-bottom: 80px !important; 
+
+}
+.page_main{
     h2{font: 700 24px/1em "";color:rgb(65, 65, 65);line-height: 35px;}
     h3{font: 18px/1em "";color:rgb(255, 136, 0);line-height: 35px}
     .page_main_left{
-        width:380px;
-        height:380px;
+        width:350px;
+        height:350px;
         float:left;
-        >img{
-            width:380px;
+        position: relative;
+        .bbox{
+            position: absolute;
+            top: 0px;
+            right: -398px;
+            display: none;
+            z-index: 100;
         }
+        // >img{
+        //     width:380px;
+        // }
         .page_main_left_banner{
             width: 350px;
             position: relative;
@@ -24,6 +36,8 @@
             }
         }
         .page_main_left{
+            position: relative;
+
         }
         .page_main_left_banner ul{
             width: 325px;
@@ -175,3 +189,4 @@
             background:rgb(255, 136, 0)}
     }
 }
+

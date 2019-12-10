@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/page.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/jquery.exzoom.css">
     <title>Document</title>
 </head>
 <body>
@@ -12,8 +13,9 @@
     <div class="page_main clearfix wrap">
         <h2>华为 HUAWEI Mate 30 Pro 5G 亮黑 全网通5G版 8+128G</h2>
         <h3>此为5G版本。麒麟990，双4000万徕卡电影四摄</h3>
-        <div class="page_main_left">
-            <img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg" alt="">
+        <div class="page_main_left sbox">
+            <!-- <img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg" alt="">
+            <span></span>
             <div class="page_main_left_banner">
                 <div class="page_main_left_banner_jian">◀</div>
                 <div class="page_main_left_banner_jian">▶</div>
@@ -30,6 +32,31 @@
                     <li><a href=""><img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg" alt=""></a></li>
                 </ul>
             </div>
+            <div class="bbox">
+                    <img  alt="">
+            </div> -->
+
+            <div class="exzoom" id="exzoom">
+                    <!--大图区域-->
+                    <div class="exzoom_img_box">
+                        <ul class='exzoom_img_ul'>
+                            <li><img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg"/></li>
+                            <li><img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg"/></li>
+                            <li><img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg"/></li>
+                            <li><img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg"/></li>
+                            <li><img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg"/></li>
+                            <li><img src="../images/f1ab3c57cd20ce89b3823c773a9af66bbe0384cb.jpg"/></li>
+                        </ul>
+                    </div>
+                    <!--缩略图导航-->
+                    <div class="exzoom_nav"></div>
+                    <!--控制按钮-->
+                    <p class="exzoom_btn">
+                        <a href="javascript:void(0);" class="exzoom_prev_btn"> < </a>
+                        <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+                    </p>
+                </div>  
+
         </div>
         <div class="page_main_right">
             <div class="page_main_right_price">
@@ -79,4 +106,9 @@
     <div class="footer1"></div>
 </body>
 <script src="../javascript/login.js" type="module"></script>
+<script src="../javascript/jquery-1.12.4.js"></script>
+<script src="../javascript/jquery.exzoom.js"></script>
+<script>
+$("#exzoom").exzoom();
+</script>
 </html>
