@@ -48,6 +48,7 @@ function floor() {
     })
 
 }
+floor();
 
 // 首页头部登录状态需完善
 /**
@@ -72,7 +73,6 @@ function floor() {
 //     }
 // new lon();
 // },1000)
-// floor();
 /**
  * ***********************************************************
  * ***********************************************************
@@ -134,10 +134,10 @@ class renderData{
         })
         for (let i=0;i<bgmolen;i++) {
             $(".bgmobile").eq(i).attr("id",this.res[i].doosid);
-            $(".bgmobile>.s1").children().eq(i).html(this.res[i].jiage);
-            $(".bgmobile>s").children().eq(i).html(this.res[i].original);
+            $(".bgmobile .s1_1").eq(i).html(this.res[i].jiage);
+            $(".bgmobile .s1_1").eq(i).parent().next().children(".yuanjia").html(this.res[i].original);
             $(".bgmobile").eq(i).css("background",`url(${this.res[i].img})  no-repeat center 10px/65%`);
-            $(".bgmobile>.s3").eq(i).html(this.res[i].name);
+            $(".bgmobile .s1_1").eq(i).parent().siblings("span").html(this.res[i].name);
         }
     }
 }
