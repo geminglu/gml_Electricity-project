@@ -55,4 +55,50 @@
     </div>
 </div>
 
+<script>
+    class search{
+        constructor() {
+            this.sousuo = $(".search_top .ss");
+            this.soubut = $(".search_top .but")
+            this.addEvent();
+        }
+        addEvent() {
+            var that = this;
+            this.soubut.on("click",function () {
+                function IsLoad(_url,fun){
+                    $.ajax({
+                        url:_url,
+                        type:"get",
+                        success:function(){
+                            //说明请求的url存在，并且可以访问
+                            if($.isFunction(fun)){
+                                    fun(true);
+                                }
+                        },
+                        statusCode:{
+                            404:function(){
+                            //说明请求的url不存在
+                            if($.isFunction(fun)){
+                                fun(false);
+                            }
+                            }
+                        }
+                        });
+                    }
+                    //调用
+                    let url = "./html/search.html";
+                    IsLoad(url,function(res){
+                        if(res){
+                            location.href = "./html/search.html";
+                        }else{
+                            location.href = "./search.html";
+                        }
+                    });
+                $.cookie("suosou",that.sousuo.val(),{expires: 7, path: '/'})
+            });
+        }
+    }
+
+    new search();
+    </script>
 

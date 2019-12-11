@@ -4,7 +4,10 @@ import "./jquery_cookie.js";
 $(".banner").banner($(".banner").find("img"),{
     but:false,
 });
-$(".top").load("html/header.html")
+$(".top").load("html/header.html",function(response,status,xhr){
+    // new lon();
+    // new search();
+})
 $(".footer1").load("html/footer.html")
 $(".sidebar1").load("html/sidebar.html")
 
@@ -58,21 +61,20 @@ floor();
  * ***********************************************************
  * ***********************************************************
  */
-// setTimeout(()=>{
-//     class lon{
-//         constructor() {
-//             this.coo = $.cookie("userMsg");
-//             console.log(this.coo);
-//             console.log(JSON.parse(this.coo))
-//             if (JSON.parse(this.coo).length >= 1) {
-//                 JSON.parse(this.coo).forEach(function (item,index,arr) {
-//                     $(".lll").html("欢迎" + item.user)
-//                 });
-//             }
-//         }
-//     }
-// new lon();
-// },1000)
+
+    // class lon{
+    //     constructor() {
+    //         this.coo = $.cookie("userMsg");
+    //         console.log(JSON.parse(this.coo))
+    //         if (JSON.parse(this.coo).length >= 1) {
+    //             JSON.parse(this.coo).forEach(function (item,index,arr) {
+    //                 $(".lll").html("欢迎" + item.user)
+    //             });
+    //         }
+    //     }
+    // }
+
+
 /**
  * ***********************************************************
  * ***********************************************************
@@ -80,6 +82,7 @@ floor();
  * ***********************************************************
  * ***********************************************************
  */
+
 
 
 class renderData{
@@ -145,3 +148,7 @@ function random(max,min) {
     return (Math.round(Math.random()*(max-min)+min));
 }
 new renderData();
+
+
+
+

@@ -34,18 +34,22 @@ class dotd {
     // 渲染数据
     display() {
         var that = this;
-        var str;
+        var str = "";
+        // console.log(this.res[1].image.length)
         for (let i=0;i<this.res.length;i++) {
             if (this.res[i].doosid == this.cook) {
                 $(this.h2).html(this.res[i].name);
                 $(this.h3).html(this.res[i].title);
                 $(this.jg).html(this.res[i].jiage)
-                str = `<li><img src="${this.res[i].img}"/></li>
-                    <li><img src="${this.res[i].img1}"/></li>
-                    <li><img src="${this.res[i].img2}"/></li>
-                    <li><img src="${this.res[i].img3}"/></li>
-                    <li><img src="${this.res[i].img4}"/></li>
-                    <li><img src="${this.res[i].img5}"/></li>`
+                for (let j=0;j<this.res[i].image.length;j++) {
+                    str += `<li><img src="${this.res[i].image[j]}"/></li>`;
+                }
+                // str = `<li><img src="${this.res[i].img}"/></li>
+                //     <li><img src="${this.res[i].img1}"/></li>
+                //     <li><img src="${this.res[i].img2}"/></li>
+                //     <li><img src="${this.res[i].img3}"/></li>
+                //     <li><img src="${this.res[i].img4}"/></li>
+                //     <li><img src="${this.res[i].img5}"/></li>`
                 break;
             }
         }

@@ -56,6 +56,7 @@ class Car{
             }
         }
         this.tby.innerHTML = str;
+        console.log(this.tby)
         // 小计,必须要在页面数据加载成功后执行，否则获取不到页面元素
         this.total();
         // 选项
