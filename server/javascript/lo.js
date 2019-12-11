@@ -16,15 +16,16 @@ class Ulogin{
         this.pass = document.querySelector(".pa");
         this.but = document.querySelector(".but");
         this.ts = document.querySelector(".tishi");
-        this.coo = $.cookie("userMsg")
+        this.coo = $.cookie("userMsg") ? JSON.parse($.cookie("userMsg")) : [];
+        console.log(this.coo)
         this.addEvent();
         this.getCookie();
     }
     // 读取cookie
     getCookie() {
-        if (JSON.parse(this.coo).length >= 1) {
-            this.u = JSON.parse(this.coo)[0].user;
-            this.p = JSON.parse(this.coo)[0].pass;
+        if (this.coo.length >= 1) {
+            this.u = this.coo[this.coo.length-1].user;
+            this.p = this.coo[this.coo.length-1].pass;
             this.text.value = this.u
             this.pass.value = this.p
         }
@@ -32,21 +33,21 @@ class Ulogin{
     addEvent() {
         var that = this;
         this.but.onclick = ()=>{
-            var y = JSON.parse(that.coo).every(function (item,index,arr) {
-               return (item.user == that.text.value && item.pass == that.pass.value)
-            
-            })
-            if (y) {
-                console.log(y)
-                that.logtype();
-                location.href = "../index.html";
-            }else{
+            for (let i=0;i<that.coo.length;i++) {
+                if (that.coo[i].user == this.text.value && that.coo[i].pass == this.pass.value) {
+                    that.coo[i].onoff = 1;
+                    $.cookie("userMsg",JSON.stringify(that.coo),{ expires: 7, path: '/' })
+                    that.ts.innerHTML = "";
+                    location.href = "../index.html";
+                    break;
+                }else{
+                    that.ts.innerHTML = "用户名或密码错误"
+                }
+            }
+            if (that.coo.length == 0) {
                 that.ts.innerHTML = "用户名或密码错误"
             }
         }
-    }
-    logtype(){
-        JSON.parse(this.coo)[0].onoff = 1;
     }
 }
 

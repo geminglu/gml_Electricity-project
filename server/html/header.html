@@ -98,7 +98,21 @@
             });
         }
     }
-
     new search();
-    </script>
+
+class lon{
+    constructor() {
+        this.coo = JSON.parse($.cookie("userMsg"));
+        if (this.coo.length > 0) {
+            for (let i=0;i<this.coo.length;i++) {
+                // console.log(this.coo[i].onoff)
+                if (this.coo[i].onoff == 1) {
+                    $(".lll").html("欢迎"+this.coo[i].user)
+                }
+            }
+        }
+    }
+}
+new lon();
+</script>
 

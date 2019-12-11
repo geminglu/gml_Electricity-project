@@ -6,10 +6,10 @@ $(".banner").banner($(".banner").find("img"),{
 });
 $(".top").load("html/header.html",function(response,status,xhr){
     // new lon();
-    // new search();
 })
 $(".footer1").load("html/footer.html")
 $(".sidebar1").load("html/sidebar.html")
+
 
 
 
@@ -53,35 +53,21 @@ function floor() {
 }
 floor();
 
-// 首页头部登录状态需完善
-/**
- * ***********************************************************
- * ***********************************************************
- * ***********************************************************
- * ***********************************************************
- * ***********************************************************
- */
 
-    // class lon{
-    //     constructor() {
-    //         this.coo = $.cookie("userMsg");
-    //         console.log(JSON.parse(this.coo))
-    //         if (JSON.parse(this.coo).length >= 1) {
-    //             JSON.parse(this.coo).forEach(function (item,index,arr) {
-    //                 $(".lll").html("欢迎" + item.user)
-    //             });
-    //         }
-    //     }
-    // }
+// class lon{
+//     constructor() {
+//         this.coo = JSON.parse($.cookie("userMsg"));
+//         if (this.coo.length > 0) {
+//             for (let i=0;i<this.coo.length;i++) {
+//                 // console.log(this.coo[i].onoff)
+//                 if (this.coo[i].onoff == 1) {
+//                     $(".lll").html("欢迎"+this.coo[i].user)
+//                 }
+//             }
+//         }
+//     }
+// }
 
-
-/**
- * ***********************************************************
- * ***********************************************************
- * ***********************************************************
- * ***********************************************************
- * ***********************************************************
- */
 
 
 

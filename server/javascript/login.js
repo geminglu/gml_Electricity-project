@@ -6,7 +6,6 @@ $(".top1").load("../html/header.html")
 $(".footer1").load("../html/footer.html")
 $(".sidebar1").load("../html/sidebar.html")
 
-
 class register{
     constructor(){
         this.user = document.querySelector(".user");
@@ -15,7 +14,7 @@ class register{
         this.usery = document.querySelector(".usery");
         this.log = document.querySelector("#log");
         this.span = document.querySelector("#span");
-            this.addEvent();
+        this.addEvent();
     }
     addEvent(){
         // 注册按钮事件
@@ -104,5 +103,5 @@ class Ulogin{
 
 
 
-// new register();
-// new Ulogin();
+new register();
+new Ulogin();
