@@ -11,6 +11,7 @@ class dotd {
         this.img_ul = $(".exzoom_img_ul");
         this.but = $(".gwc");
         this.comoiy = $(".commodity");
+        this.gm = $(".gm");
         this.jg = $(".page_main_right_price span");
         this.cook = $.cookie("spid");
         // 获取当前商品的id
@@ -58,6 +59,9 @@ class dotd {
             console.log(that.num)
             that.setCookie();
             console.log($.cookie())
+        })
+        this.gm.on("click",function () {
+            location.href = "../html/cart.html";
         })
     }
     setCookie(){

@@ -1,6 +1,5 @@
 import "./jquery-1.12.4.js";
-import "./Ajax.js";
-import "./cookie.js";
+import "./jquery_cookie.js";
 
 
 $(".top1").load("../html/header.html")
@@ -9,7 +8,6 @@ $(".sidebar1").load("../html/sidebar.html")
 class Car{
     constructor(){
         // 获取元素
-        this.url = "goods.json";
         this.tby = document.querySelector(".tbody");
         this.totalValue = document.querySelector(".totalValue");
         this.load();
@@ -17,36 +15,43 @@ class Car{
     }
     // 请求数据
     load(){
-        ajaxGet(this.url,(res)=>{
-            // 解析成数组
-            this.res = JSON.parse(res);
-            this.getCookie();
-        },{
-
-        });
+        var that = this;
+        $.ajax({
+            url:"../data/data.json",
+            success:function(a){
+                that.res = a;
+                // json数据请求成功后获取cookie
+                that.getCookie();
+            },
+            dataType:"json",
+        })
     }
     // 获取cookie
     getCookie(){
         // 如果cookie里面有数据就解析数据如果没有数据就返回一个空数组
-        this.goods = getCookie("goodsCookie") ? JSON.parse(getCookie("goodsCookie")) : [];
+        this.goods = $.cookie("goodsCookie") ? JSON.parse($.cookie("goodsCookie")) : [];
         this.display();
     }
     // 渲染页面
     display(){
+        // console.log(this.goods)
+        // console.log(this.goods[1].id)
+        // console.log(this.res[1].doosid)
         var str = "";
         for (var i=0;i<this.goods.length;i++) {
             for (var j=0;j<this.res.length;j++) {
                 // 如果cookie里的数据和json的数据匹配成功就渲染页面
-                if (this.goods[i].id === this.res[j].goodsId){
-                    str += `<tr id="${this.res[j].goodsId}" class="list">
+                if (this.goods[i].id == this.res[j].doosid){
+                    str += `<tr id="${this.res[j].doosid}" class="list">
                         <td class="check"><input type="checkbox" class="checkbox" checked /></td>
                         <td><img src="${this.res[j].img}" /></td>
                         <td>${this.res[j].name}</td>
-                        <td class="jg">${this.res[j].price}</td>
+                        <td class="jg">${this.res[j].jiage}</td>
                         <td><input type="number" class="num" min=1 value="${this.goods[i].num}" /></td>
                         <td class="subtotal"><span>00.00</span></td>
                         <td><input type="button" class="del" value="删除"></td>
                     </tr>`;
+                    break;
                 }
             }
         }
@@ -79,10 +84,11 @@ class Car{
     }
     delCookie(){
         // 每次点击都需要获取新的cookie，因为商品列表修改后没有刷新购物车页面就修改了购物车的数据，这时修改的还是旧的cookie数据，所以在修改时就要获取最新的cookie
-        this.co = JSON.parse(getCookie("goodsCookie"))
+        this.co = JSON.parse($.cookie("goodsCookie"))
+        console.log(this.co)
         // 用cookie的数据与每一个购物车列表对比
         for (var i=0;i<this.co.length;i++) {
-            if (this.target.parentNode.parentNode.id === this.co[i].id) {
+            if (this.target.parentNode.parentNode.id == this.co[i].id) {
                 // 如果匹配到了就删除cookie里的相应数据
                 this.co.splice([i],1)
                 // 数据只有一条不会重复的，只要匹配到就不用在匹配了
@@ -90,14 +96,14 @@ class Car{
             }
         }
         // 将新的cookie数据存到cookie里
-        setCookie("goodsCookie",JSON.stringify(this.co))
+        $.cookie("goodsCookie",JSON.stringify(this.co),{expires: 7, path: '/'})
     }
     upCookie(){
         // 获取新cookie数据
-        this.uco = JSON.parse(getCookie("goodsCookie"));
+        this.uco = JSON.parse($.cookie("goodsCookie"));
         // 用cookie的数据与每一个购物车列表对比
         for (var i=0;i<this.uco.length;i++) {
-            if (this.target.parentNode.parentNode.id === this.uco[i].id) {
+            if (this.target.parentNode.parentNode.id == this.uco[i].id) {
                 // 如果匹配到了就修改cookie里的num
                 (this.uco)[i].num = this.target.value;
                 // 数据只有一条不会重复的，只要匹配到就不用在匹配了
@@ -105,7 +111,7 @@ class Car{
             }
         }
         // 将新的cookie数据存到cookie里
-        setCookie("goodsCookie",JSON.stringify(this.uco))
+        $.cookie("goodsCookie",JSON.stringify(this.uco),{expires: 7, path: '/'})
     }
     // 小计
     total(){
@@ -121,7 +127,7 @@ class Car{
         this.totalValue.children[0].innerHTML = this.str;
     }
     totalPrices(){
-        console.log("fcbejh");
+        
 
     }
     // 选项
