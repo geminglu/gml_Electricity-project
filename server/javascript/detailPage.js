@@ -9,10 +9,16 @@ class dotd {
         this.h2 = $(".page_main>h2");
         this.h3 = $(".page_main>h3");
         this.img_ul = $(".exzoom_img_ul");
+        this.but = $(".gwc");
+        this.comoiy = $(".commodity");
         this.jg = $(".page_main_right_price span");
         this.cook = $.cookie("spid");
+        // 获取当前商品的id
+        this.id = $.cookie("spid");
         this.ajaxqq();
+        this.addEvent();
     }
+    // 请求数据
     ajaxqq(){
         var that = this;
         $.ajax({
@@ -24,6 +30,7 @@ class dotd {
             dataType:"json",
         })
     }
+    // 渲染数据
     display() {
         var that = this;
         var str;
@@ -43,6 +50,43 @@ class dotd {
         }
         $(this.img_ul).html(str)
         $("#exzoom").exzoom();
+    }
+    addEvent() {
+        let that = this;
+        this.but.on("click",function() {
+            that.num = that.comoiy.val();
+            console.log(that.num)
+            that.setCookie();
+            console.log($.cookie())
+        })
+    }
+    setCookie(){
+        this.goods = $.cookie("goodsCookie") ? JSON.parse($.cookie("goodsCookie")) : [];
+        // 如果cookie里有商品数据就在后面添加数据
+        if (this.goods.length < 1) {
+            this.goods.push({
+                id:this.id,
+                num:this.num
+            })
+        }else{
+            // 判断cookie里是否有重复的数据如果有就在当前商品的num添加数值
+            var onoff = true;
+            for (var i=0;i<this.goods.length;i++) {
+                if (this.goods[i].id === this.id) {
+                    this.goods[i].num = (this.goods[i].num)*1 + this.num*1;
+                    console.log(this.num*1)
+                    onoff = false;
+                }
+            }
+            // 如果该商品有重复的就不会执行指一条语句
+            if (onoff) {
+                this.goods.push({
+                    id:this.id,
+                    num:this.num
+                })
+            }
+        }
+        $.cookie("goodsCookie",JSON.stringify(this.goods),{expires: 7, path: '/'})
     }
 }
 new dotd();
