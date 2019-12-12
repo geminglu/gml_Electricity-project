@@ -149,3 +149,36 @@ class countDown{
     }
 }
 new countDown();
+
+class tab{
+    constructor() {
+        this.tab = $(".tab");
+        this.ul = $(".box1>ul");
+        this.display();
+    }
+    display() {
+        // console.log(this.tab[1])
+        // for (let i=0;i<this.tab.length;i++) {
+        //     this.tab.eq(i).attr("id",i);
+        //     this.ul.eq(i).attr("id",i);
+        // }
+        var that = this;
+        this.tab.eq(1).css("background","#aeaeae");
+        this.ul.eq(1).css("display","none");
+        this.tab.eq(0).on("click",function () {
+            that.tab.eq(0).css("background","#6495ed");
+            that.tab.eq(1).css("background","#aeaeae");
+            that.ul.eq(0).css("display","flex");
+            that.ul.eq(1).css("display","none");
+
+        })
+        this.tab.eq(1).on("click",function () {
+            that.tab.eq(1).css("background","#6495ed");
+            that.tab.eq(0).css("background","#aeaeae");
+            that.ul.eq(1).css("display","flex");
+            that.ul.eq(0).css("display","none");
+
+        })
+    }
+}
+new tab();

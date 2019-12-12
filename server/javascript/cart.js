@@ -34,9 +34,6 @@ class Car{
     }
     // 渲染页面
     display(){
-        // console.log(this.goods)
-        // console.log(this.goods[1].id)
-        // console.log(this.res[1].doosid)
         var str = "";
         for (var i=0;i<this.goods.length;i++) {
             for (var j=0;j<this.res.length;j++) {
@@ -48,7 +45,7 @@ class Car{
                         <td>${this.res[j].name}</td>
                         <td class="jg">${this.res[j].jiage}</td>
                         <td><input type="number" class="num" min=1 value="${this.goods[i].num}" /></td>
-                        <td class="subtotal"><span>00.00</span></td>
+                        <td class="subtotal"><span class="xiaoji">00.00</span></td>
                         <td><input type="button" class="del" value="删除"></td>
                     </tr>`;
                     break;
@@ -56,7 +53,6 @@ class Car{
             }
         }
         this.tby.innerHTML = str;
-        console.log(this.tby)
         // 小计,必须要在页面数据加载成功后执行，否则获取不到页面元素
         this.total();
         // 选项
@@ -121,15 +117,21 @@ class Car{
             var j = this.tby.children[i].querySelector(".jg").innerHTML;
             var s = this.tby.children[i].querySelector(".num").value;
             // 小计
-            var w = this.tby.children[i].querySelector(".subtotal").querySelector("span").innerHTML = j * s;
+            this.w = this.tby.children[i].querySelector(".subtotal").querySelector("span").innerHTML = j * s;
             // 总价
-            this.str += w;
+            this.str += this.w;
         }
-        this.totalValue.children[0].innerHTML = this.str;
+        // this.totalValue.children[0].innerHTML = this.str;
+        this.totalPrices();
     }
     totalPrices(){
-        
-
+        let ert = 0;
+        for (let i=0;i<$(".list").length;i++) {
+            if ($(".list").eq(i).children(".check").children(".checkbox").get(0).checked) {
+                ert += $(".list").eq(i).children(".subtotal").children(".xiaoji").get(0).innerHTML*1
+            }
+        }
+        this.totalValue.children[0].innerHTML = ert
     }
     // 选项
     Operation(){

@@ -340,10 +340,8 @@ a:hover{color:#0953d3;}
 .sidebar{width:35px;height:100%;margin: 0 auto;}
 .sidebar li a{display:block;width:55px;height: 55px;;margin:5px 0;background:url(../images/layer_icos.png) no-repeat center;}
 .sidebar li:nth-child(1) a{background-position: -10px 7px;}
-.sidebar li:nth-child(2) a{background-position: 6px -66px;width:60px;height: 75px;margin-left: -16px;position: relative;}
-.sjbdh{    position: absolute;
-    left: 25px;
-    top: 0;
+.sidebar li:nth-child(2) a{background-position: 6px -66px;width:60px;height: 75px;margin-left: -16px;position: relative;text-align: center;}
+.sjbdh{
     font-size: 16px;
     color: red;
     font-weight: 700;}
@@ -353,7 +351,8 @@ a:hover{color:#0953d3;}
 .sidebar li:nth-child(5) a{height:40px;background: url(../images/scrollTop.png) no-repeat 4px -40px;margin-top:100px}
 .sidebar li:nth-child(5) a:hover{background-position:4px 7px;}
 .sidebar1{position: fixed;top: 0px;right: 0;background: white;height: 100%;display: block;padding-top: 100px;border-left:1px solid #e3e3e3;}
-
+.qweqq{width:1000px;margin:0 auto;text-align: center;}
+.tab{display: inline-block;width:100px;font: 18px/2em "";margin: 0 auto;background: cornflowerblue;color:#fff;cursor: pointer;margin-top:5px}
 
 
 
