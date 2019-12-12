@@ -24,14 +24,14 @@ gulp.task("server",()=>{
 
 // (合并，压缩，改名)
 gulp.task("hyg",()=>{
-    gulp.src("./res/javascript/*.js")
+    gulp.src("./server/javascript/*.js")
     .pipe(babel())
-    .pipe(concat("index.js"))   // 合并后改名
-    .pipe(gulp.dest("server/javascript"))  // 转存
-    .pipe(uglify()) // 压缩
-    .pipe(rename("index.min.js"))
-    .pipe(gulp.dest("server/javascript"))
-    .pipe(connect.reload())
+    // .pipe(concat("index.js"))   // 合并后改名
+    // .pipe(uglify()) // 压缩
+    .pipe(gulp.dest("server/qwe"))  // 转存
+    // .pipe(rename("index.min.js"))
+    // .pipe(gulp.dest("server/javascript"))
+    // .pipe(connect.reload())
 })
 
 // sass转css

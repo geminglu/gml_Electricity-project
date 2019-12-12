@@ -1,6 +1,7 @@
 import "./jquery-1.12.4.js";
 import "./banner.js";
 import "./jquery_cookie.js";
+// import { spawn } from "child_process";
 $(".banner").banner($(".banner").find("img"),{
     but:false,
 });
@@ -56,24 +57,6 @@ function floor() {
 
 }
 floor();
-
-
-// class lon{
-//     constructor() {
-//         this.coo = JSON.parse($.cookie("userMsg"));
-//         if (this.coo.length > 0) {
-//             for (let i=0;i<this.coo.length;i++) {
-//                 // console.log(this.coo[i].onoff)
-//                 if (this.coo[i].onoff == 1) {
-//                     $(".lll").html("欢迎"+this.coo[i].user)
-//                 }
-//             }
-//         }
-//     }
-// }
-
-
-
 
 class renderData{
     constructor() {
@@ -140,5 +123,29 @@ function random(max,min) {
 new renderData();
 
 
+class countDown{
+    constructor() {
+        setInterval(()=>{
+            this.dis();
 
-
+        },1000)
+    }
+    getDate() {
+        var d = new Date();
+        this.shi = 24 - d.getHours();
+        this.fen = 60 - d.getMinutes();
+        this.s = 60 - d.getSeconds();
+    }
+    dis() {
+        this.getDate();
+        let arr = [3,6,8,1,5,9]
+        let arr1 = [3,8,5,9,4,2]
+        for (let i=0;i<$(".box_activity").length;i++) {
+            $(".box_activity").eq(i).children("span").eq(0).html(this.shi + arr1[i]);
+            $(".box_activity").eq(i).children("span").eq(1).html(this.fen + arr[i]);
+            $(".box_activity").eq(i).children("span").eq(2).html(this.s - 1);
+        }
+        
+    }
+}
+new countDown();

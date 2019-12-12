@@ -92,6 +92,7 @@
                 margin-right: 5px;}
         }
         .distribution{
+            
             margin-top:20px;
             .page_main_right_tile{
                 display: inline-block;
@@ -104,11 +105,14 @@
             .distribution_top_site{
                 color:#333;
                 padding: 3px;
-                border:1px solid #d4d4d4;
+                #distpicker5{
+                    display: inline-block;
+                }
             }
             .page_main_right_goods{
                 color:#999;
                 font-weight:700;
+                margin-left: 70px;
             }
             span{
                 color:#666;
@@ -124,7 +128,6 @@
             }
         }
         .page_main_right_versions{
-
             span{
                 display: inline-block;
                 color:#666;
@@ -151,6 +154,9 @@
                     a{
                         color:#666
 
+                    }
+                    img{
+                        width: 30px;
                     }
                 }
             }
@@ -189,4 +195,6 @@
             background:rgb(255, 136, 0)}
     }
 }
-
+.page_main_right div.page_main_right_versions ul li:first-child{
+    border:1px solid rgb(3, 169, 244) 
+}

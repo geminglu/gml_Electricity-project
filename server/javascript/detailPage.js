@@ -1,6 +1,8 @@
 import "./jquery-1.12.4.js";
 import "./jquery_cookie.js";
 import "./jquery.exzoom.js";
+import "./distpicker.data.js";
+import "./distpicker.js";
 
 $(".sidebar1").load("html/sidebar.html");
 
@@ -35,26 +37,31 @@ class dotd {
     display() {
         var that = this;
         var str = "";
+        var str1 = "";
+        var str2 = "";
         // console.log(this.res[1].image.length)
         for (let i=0;i<this.res.length;i++) {
             if (this.res[i].doosid == this.cook) {
                 $(this.h2).html(this.res[i].name);
                 $(this.h3).html(this.res[i].title);
                 $(this.jg).html(this.res[i].jiage)
+                for (let q=0;q<this.res[i].color.length;q++) {
+                    str1 += `<li><img src="${this.res[i].img}" alt="">${this.res[i].color[q]}</li>`
+                }
+                for (let q=0;q<this.res[i].memory.length;q++) {
+                    str2 += `<li class="ver">${this.res[i].memory[q]}</li>`;
+                }
                 for (let j=0;j<this.res[i].image.length;j++) {
                     str += `<li><img src="${this.res[i].image[j]}"/></li>`;
                 }
-                // str = `<li><img src="${this.res[i].img}"/></li>
-                //     <li><img src="${this.res[i].img1}"/></li>
-                //     <li><img src="${this.res[i].img2}"/></li>
-                //     <li><img src="${this.res[i].img3}"/></li>
-                //     <li><img src="${this.res[i].img4}"/></li>
-                //     <li><img src="${this.res[i].img5}"/></li>`
                 break;
             }
         }
         $(this.img_ul).html(str)
         $("#exzoom").exzoom();
+        $(".page_main_right_versions").children("ul").eq(0).html(str1);
+        $(".page_main_right_versions").children("ul").eq(1).html(str2);
+        this.option();
     }
     addEvent() {
         let that = this;
@@ -66,6 +73,17 @@ class dotd {
         })
         this.gm.on("click",function () {
             location.href = "../html/cart.html";
+        })
+    }
+    option() {
+        // $(".page_main_right_versions").children("ul").eq(0).children().css("border","1px solid rgb(223, 223, 223)");
+        $(".page_main_right_versions").children("ul").eq(0).children().on("click",function() {
+            $(".page_main_right_versions").children("ul").eq(0).children().css("border","1px solid rgb(223, 223, 223)");
+            $(this).css("border","1px solid #03A9F4");
+        })
+        $(".page_main_right_versions").children("ul").eq(1).children().on("click",function() {
+            $(".page_main_right_versions").children("ul").eq(1).children().css("border","1px solid rgb(223, 223, 223)");
+            $(this).css("border","1px solid #03A9F4");
         })
     }
     setCookie(){
@@ -98,3 +116,12 @@ class dotd {
     }
 }
 new dotd();
+
+
+
+      $('#distpicker5').distpicker({
+        province: '浙江省',
+        city: '杭州市',
+        district: '西湖区'
+      });
+
