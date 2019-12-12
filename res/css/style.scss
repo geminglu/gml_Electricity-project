@@ -338,7 +338,13 @@ a:hover{color:#0953d3;}
 .sidebar{width:35px;height:100%;margin: 0 auto;}
 .sidebar li a{display:block;width:55px;height: 55px;;margin:5px 0;background:url(../images/layer_icos.png) no-repeat center;}
 .sidebar li:nth-child(1) a{background-position: -10px 7px;}
-.sidebar li:nth-child(2) a{background-position: 6px -66px;width:60px;height: 75px;margin-left: -16px;;}
+.sidebar li:nth-child(2) a{background-position: 6px -66px;width:60px;height: 75px;margin-left: -16px;position: relative;}
+.sjbdh{    position: absolute;
+    left: 25px;
+    top: 0;
+    font-size: 16px;
+    color: red;
+    font-weight: 700;}
 .sidebar li:nth-child(3) a{background-position: -11px -153px;}
 .sidebar li:nth-child(4) a{background: no-repeat;}
 .sidebar li:nth-child(4) a img{margin-top:7px;margin-left:5px}

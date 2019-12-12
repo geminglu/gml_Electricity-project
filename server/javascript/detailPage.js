@@ -2,7 +2,7 @@ import "./jquery-1.12.4.js";
 import "./jquery_cookie.js";
 import "./jquery.exzoom.js";
 
-
+$(".sidebar1").load("html/sidebar.html");
 
 class dotd {
     constructor () {

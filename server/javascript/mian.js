@@ -8,8 +8,12 @@ $(".top").load("html/header.html",function(response,status,xhr){
     // new lon();
 })
 $(".footer1").load("html/footer.html")
-$(".sidebar1").load("html/sidebar.html")
+$(".sidebar1").load("html/sidebar.html",function(response,status,xhr){
+    $(".sjbdh").parent().on("click",()=>{
+        location.href = "html/cart.html";
+    })
 
+})
 
 
 
